@@ -1,0 +1,25 @@
+%h1 Invoice
+.bs-example{"data-example-id" => "striped-table"}
+  %table.table.table-striped
+    %thead
+      %tr
+        %th #
+        %th Product Name
+        %th Price
+        %th Amount
+        %th Total
+        %th Total USD
+    %tbody
+      %tr
+        %th{:scope => "row"} 
+        %td
+          %select
+            - @products.each_with_index do |product, index|
+              %option{value: product.price,  class: "#{index == 0 ? "active" : ""}"}=product.name
+        %td.price
+        %td
+          %input.amount{type: "text", value: "0"}
+        %td.total 0
+        %td #cuurent_usd
+
+= link_to"Create New product", products_path
